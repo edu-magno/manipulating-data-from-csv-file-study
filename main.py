@@ -10,7 +10,7 @@ def create_header_of_csv(fieldnames: List, filename: str):
         writer.writeheader()
 
 
-def get_character_id(filename) -> int:
+def get_character_id(filename: str):
     with open(filename, 'r', newline='') as file:
         reader = csv.DictReader(file)
 
@@ -47,7 +47,7 @@ def create_character(filename: str, name: str, intelligence: str, power: str, st
         return list(read)[-1]
 
 
-def find_character_by_id(filename, character_id):
+def find_character_by_id(filename: str, character_id: int):
     with open(filename, 'r', newline='') as file:
         reader = csv.DictReader(file)
 
@@ -59,7 +59,7 @@ def find_character_by_id(filename, character_id):
         return None
 
 
-def find_all_character(filename, **kwargs):
+def find_all_characters(filename: str, **kwargs):
     list_of_characters_match = []
     with open(filename, 'r', newline='') as file:
         reader = csv.DictReader(file)
@@ -73,7 +73,7 @@ def find_all_character(filename, **kwargs):
     return list_of_characters_match
 
 
-def delete_character(filename, character_id):
+def delete_character(filename: str, character_id):
     fieldnames = ['id', 'name', 'intelligence', 'power', 'strength', 'agility']
     rows = []
     with open(filename, 'r+', newline='') as file:
@@ -90,7 +90,7 @@ def delete_character(filename, character_id):
         writer.writerows(rows)
 
 
-def update_character(filename, character_id, **kwargs):
+def update_character(filename: str, character_id, **kwargs):
     fieldnames = ['id', 'name', 'intelligence', 'power', 'strength', 'agility']
     rows = []
     with open(filename, 'r+', newline='') as file:
